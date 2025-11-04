@@ -23,4 +23,4 @@ jobs:
         uses: ggofri/github-activity-updater@v1
         with:
           github-token: ${{ secrets.TOKEN }}
-          username: saisai568 
+          username: saisai568
