@@ -3,7 +3,5 @@ title: Home
 layout: default
 ---
 
-{% capture readme %}
-{% include_relative README.md %}
-{% endcapture %}
+{% assign readme = site.github.repository_readme %}
 {{ readme | markdownify }}
