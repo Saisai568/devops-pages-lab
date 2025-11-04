@@ -1,0 +1,22 @@
+name: Update GitHub Activity Log
+
+on:
+  workflow_dispatch:          # 允許手動執行
+  push:
+    branches:
+      - main
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate GitHub activity and update README
+        uses: readme-typing-action/github-activity-readme@v1.7.0
+        with:
+          GH_TOKEN: ${{ secrets.TOKEN }}
+          COMMIT_MSG: "🔄 Update activity log via GitHub Actions"
+          MAX_LINES: 10
