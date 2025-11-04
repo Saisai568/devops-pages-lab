@@ -2,13 +2,32 @@ name: Update GitHub Activity Log
 
 on:
   schedule:
-    - cron: '0 */12 * * *'   # 每 12 小時自動執行
+    - cron: "0 0 * * *"  # 每天 00:00 UTC 執行
   workflow_dispatch:          # 可手動觸發
   push:
     branches:
       - main
 
 jobs:
+  # 🔍 Job 1: 檢查 README.md 格式
+  lint:
+    name: Lint Markdown files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Run markdownlint on README.md
+        run: markdownlint README.md
+
   update-activity:
     runs-on: ubuntu-latest
     permissions:

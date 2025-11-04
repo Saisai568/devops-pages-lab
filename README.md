@@ -1,10 +1,11 @@
 # DevOps Activity Log Project
 
+## 🧭 About This Repository
+This repository automatically updates my GitHub activity log every day using GitHub Actions.
+
 ## Owner
  - **Name:** Saisai568  
  - **Course:** DevOps  
-
----
 
 ## My Recent GitHub Activity
 
@@ -15,8 +16,6 @@
  - 🚀 Pushed commits to [Saisai568/devops-pages-lab](https://github.com/Saisai568/devops-pages-lab) - Nov 04
  - 🚀 Pushed commits to [Saisai568/devops-pages-lab](https://github.com/Saisai568/devops-pages-lab) - Nov 04
 <!--END_SECTION:activity-->
-
----
 
 ## 工作流程說明（Workflow）
 
@@ -73,5 +72,3 @@ docker run --rm -it -p 4000:4000 -v ${PWD}.Path:/srv/jekyll -w /srv/jekyll jekyl
 # 簡易 smoke test
 Invoke-WebRequest -UseBasicParsing http://localhost:4000
 ```
-
----
