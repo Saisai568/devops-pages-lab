@@ -1,7 +1,9 @@
 name: Update GitHub Activity Log
 
 on:
-  workflow_dispatch:          # 允許手動執行
+  schedule:
+    - cron: '0 */12 * * *'   # 每 12 小時自動執行
+  workflow_dispatch:          # 可手動觸發
   push:
     branches:
       - main
@@ -9,14 +11,16 @@ on:
 jobs:
   update-activity:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Generate GitHub activity and update README
-        uses: readme-typing-action/github-activity-readme@v1.7.0
         with:
-          GH_TOKEN: ${{ secrets.TOKEN }}
-          COMMIT_MSG: "🔄 Update activity log via GitHub Actions"
-          MAX_LINES: 10
+          token: ${{ secrets.TOKEN }}
+      
+      - name: Update GitHub Activity
+        uses: ggofri/github-activity-updater@v1
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          username: saisai568
