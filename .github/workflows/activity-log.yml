@@ -11,14 +11,16 @@ on:
 jobs:
   update-activity:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Update GitHub activity in README
-        uses: jamesgeorge007/github-activity-readme@v0.3.0
         with:
-          GH_TOKEN: ${{ secrets.TOKEN }}
-          MAX_LINES: 10
-          README_PATH: 'README.md'
+          token: ${{ secrets.TOKEN }}
+      
+      - name: Update GitHub Activity
+        uses: ggofri/github-activity-updater@v1
+        with:
+          github-token: ${{ secrets.TOKEN }}
+          username: saisai568 
